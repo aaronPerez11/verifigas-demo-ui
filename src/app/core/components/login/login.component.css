@@ -1,0 +1,41 @@
+.div-login{
+  padding: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 150px;
+  row-gap: 100px;
+}
+
+.label-iniciar-sesion {
+  font-size: 40px;
+  padding-bottom: 30px;
+}
+
+.panel-login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 10px;
+}
+
+#test ::ng-deep .mat-form-field .mat-form-field-label{
+  color: black;
+  font-size: 16px;
+}
+
+#test ::ng-deep .mat-form-field-appearance-outline{
+  height: 30px;
+  width: 250px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .label-iniciar-sesion{
+    font-size: 30px;
+  }
+
+}

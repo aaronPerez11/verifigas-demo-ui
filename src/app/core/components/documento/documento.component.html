@@ -1,0 +1,23 @@
+
+<div class="pdf-visor"  [style.visibility]="ocultarContenido ? 'hidden' : 'visible'">
+  <div>
+    <button mat-icon-button (click)="zoomIn()" matTooltip="Acercar">
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+    <button mat-icon-button (click)="zoomOut()" matTooltip="Alejar">
+      <mat-icon>zoom_out</mat-icon>
+    </button>
+    <button mat-icon-button (click)=" descargarPdf()" matTooltip="Descargar">
+      <mat-icon>file_download</mat-icon>
+    </button>
+  </div>
+    <pdf-viewer
+    [src]="urlPdf"
+    [render-text]="true"
+    [zoom]="zoomPage"
+    style="width: 900px; height: 600px"
+  >
+  </pdf-viewer>
+
+</div>
+

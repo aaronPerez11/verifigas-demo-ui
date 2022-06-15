@@ -1,0 +1,246 @@
+<div class="principal" [style.visibility]="ocultarContenido ? 'hidden' : 'visible'">
+  <mat-card class="card-individual">
+    <mat-card-content class="card-content">
+      <div>
+        <img class="img-gasolinera" src="../../../assets/{{ estacion.imagen }}" alt="{{ estacion.imagen }}" />
+      </div>
+      <div>
+        <dl>
+          <td>Dirección:</td>
+          <dd>{{ estacion.direccion }}</dd>
+        </dl>
+      </div>
+      <button mat-button class="button-select" (click)="informacionGasolinera()">Más Información</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-accordion class="example-headers-align">
+    <mat-expansion-panel #panel [expanded]="siguientePanel == i" *ngFor="let item of tipoErrores; let i = index" (opened)="consultarErrores(i+1)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.titulo }}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ item.descripcion }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngIf="i == 0">
+        <table mat-table [dataSource]="catalogoError" class="mat-elevation-z8">
+          <ng-container matColumnDef="icono">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element" [style.visibility]="valueProgress == 100 ? 'visible' : 'hidden'">
+              <div *ngIf="element.correcto; else incorrectoBlock">
+                <mat-icon svgIcon="aceptar"></mat-icon>
+              </div>
+              <ng-template #incorrectoBlock>
+                <mat-icon svgIcon="cancelar"></mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">{{ element.errorSistemaModel.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.errorSistemaModel.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carga">
+            <th mat-header-cell *matHeaderCellDef>Progeso</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="listaColumnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: listaColumnas"></tr>
+        </table>
+
+        <mat-action-row>
+          <button [disabled]="valueProgress != 100" mat-button color="primary" (click)="siguientePaso(siguientePanel)">Siguiente</button>
+        </mat-action-row>
+      </div>
+
+
+      <div *ngIf="i == 1">
+        <table mat-table [dataSource]="catalogoError" class="mat-elevation-z8">
+          <ng-container matColumnDef="icono">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element" [style.visibility]="valueProgress == 100 ? 'visible' : 'hidden'">
+              <div *ngIf="element.correcto; else incorrectoBlock">
+                <mat-icon svgIcon="aceptar"></mat-icon>
+              </div>
+              <ng-template #incorrectoBlock>
+                <mat-icon svgIcon="cancelar"></mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">{{ element.errorSistemaModel.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.errorSistemaModel.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carga">
+            <th mat-header-cell *matHeaderCellDef>Progeso</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="listaColumnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: listaColumnas"></tr>
+        </table>
+
+        <mat-action-row>
+          <button [disabled]="valueProgress != 100" mat-button color="primary" (click)="siguientePaso(siguientePanel)">Siguiente</button>
+        </mat-action-row>
+      </div>
+
+
+
+      <div *ngIf="i == 2">
+        <table mat-table [dataSource]="catalogoError" class="mat-elevation-z8">
+          <ng-container matColumnDef="icono">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element" [style.visibility]="valueProgress == 100 ? 'visible' : 'hidden'">
+              <div *ngIf="element.correcto; else incorrectoBlock">
+                <mat-icon svgIcon="aceptar"></mat-icon>
+              </div>
+              <ng-template #incorrectoBlock>
+                <mat-icon svgIcon="cancelar"></mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">{{ element.errorSistemaModel.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.errorSistemaModel.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carga">
+            <th mat-header-cell *matHeaderCellDef>Progeso</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="listaColumnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: listaColumnas"></tr>
+        </table>
+
+        <mat-action-row>
+          <button [disabled]="valueProgress != 100" mat-button color="primary" (click)="siguientePaso(siguientePanel)">Siguiente</button>
+        </mat-action-row>
+      </div>
+
+
+      <div *ngIf="i == 3">
+        <table mat-table [dataSource]="catalogoError" class="mat-elevation-z8">
+          <ng-container matColumnDef="icono">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element" [style.visibility]="valueProgress == 100 ? 'visible' : 'hidden'">
+              <div *ngIf="element.correcto; else incorrectoBlock">
+                <mat-icon svgIcon="aceptar"></mat-icon>
+              </div>
+              <ng-template #incorrectoBlock>
+                <mat-icon svgIcon="cancelar"></mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">{{ element.errorSistemaModel.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.errorSistemaModel.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carga">
+            <th mat-header-cell *matHeaderCellDef>Progeso</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="listaColumnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: listaColumnas"></tr>
+        </table>
+
+        <mat-action-row>
+          <button [disabled]="valueProgress != 100" mat-button color="primary" (click)="siguientePaso(siguientePanel)">Siguiente</button>
+        </mat-action-row>
+      </div>
+
+      <div *ngIf="i == 4">
+        <table mat-table [dataSource]="catalogoError" class="mat-elevation-z8">
+          <ng-container matColumnDef="icono">
+            <th mat-header-cell *matHeaderCellDef>Estatus</th>
+            <td mat-cell *matCellDef="let element" [style.visibility]="valueProgress == 100 ? 'visible' : 'hidden'">
+              <div *ngIf="element.correcto; else incorrectoBlock">
+                <mat-icon svgIcon="aceptar"></mat-icon>
+              </div>
+              <ng-template #incorrectoBlock>
+                <mat-icon svgIcon="cancelar"></mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">{{ element.errorSistemaModel.titulo }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef>Descripción</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.errorSistemaModel.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carga">
+            <th mat-header-cell *matHeaderCellDef>Progeso</th>
+            <td mat-cell *matCellDef="let element">
+              <mat-progress-bar mode="determinate" [value]="valueProgress"></mat-progress-bar>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="listaColumnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: listaColumnas"></tr>
+        </table>
+
+        <mat-action-row>
+          <button matSuffix mat-icon-button (click)="consultarPDF()" [disabled]="valueProgress != 100">
+            <mat-icon aria-label="Descargar información" matTooltip="Visualizar Resultados">picture_as_pdf</mat-icon>
+          </button>
+        </mat-action-row>
+      </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

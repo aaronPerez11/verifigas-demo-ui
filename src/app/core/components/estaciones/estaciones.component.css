@@ -1,0 +1,68 @@
+.principal {
+  display: grid;
+  grid-template-columns: auto 2fr;
+  column-gap: 30px;
+}
+
+.cards-estaciones {
+  display: flex;
+  flex-flow: row wrap;
+  /* Une dos propiedades flex-direction y flex-wrap*/
+  justify-items: center;
+}
+
+.card-individual {
+  width: 340px;
+  height: 408px;
+}
+
+.img-gasolinera {
+  width: 340px;
+  height: 221px;
+}
+
+.direccion {
+  column-gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+table {
+  width: 100%;
+}
+
+.div-table {
+  width: 800px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+@media screen and (max-width: 768px) {
+
+  .card-individual {
+    width: 250px;
+    height: 350px;
+  }
+
+  .img-gasolinera {
+    width: 250px;
+    height: 221px;
+  }
+
+}

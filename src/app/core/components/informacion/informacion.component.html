@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Información Adicional de la Gasolinera</h1>
+<div mat-dialog-content>
+  <dl>
+    <dt><strong>Sistema Volumétrico:</strong></dt>
+    <dd>Fabricante: {{data.lector.fabricante}}</dd>
+    <dd>Version: {{data.lector.version}}</dd>
+    <dd>Conectividad: {{data.lector.conectividad}}</dd>
+  </dl>
+
+  <dl>
+    <dt><strong>Estaciones de Servicio:</strong></dt>
+    <dd *ngFor="let estacion of estaciones; let i = index">
+      {{i +1}} - Codigo:{{estacion.codigo}} Combustible: {{estacion.combustible}}
+    </dd>
+  </dl>
+
+  <dl>
+    <dt><strong>Tanques:</strong></dt>
+    <dd *ngFor="let tanque of tanques; let i = index">
+      {{i +1}} - Capacidad: {{tanque.capacidad}} Presión: {{tanque.presion}} Temperatura: {{tanque.temperatura}} Combustible: {{tanque.tipoCombustible}}
+    </dd>
+  </dl>
+
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="div-login">
+  <div>
+    <img [src]="pathImgLogin" alt="" />
+  </div>
+  <form class="panel-login">
+    <h1 class="label-iniciar-sesion">
+      <strong>INICIAR SESIÓN </strong>
+    </h1>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="USUARIO" type="text" name="usuario"  required="required" [(ngModel)]="usuarioInput"/>
+          <mat-icon matPrefix>person</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="CONTRASEÑA" type="password" name="password" required="required" [(ngModel)]="passwordInput"/>
+          <mat-icon matPrefix>lock</mat-icon>
+      </mat-form-field>
+    <button mat-raised-button class="button-select" (click)="iniciarSesion()">INICIAR SESIÓN</button>
+  </form>
+</div>

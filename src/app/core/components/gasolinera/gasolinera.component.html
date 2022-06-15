@@ -1,0 +1,31 @@
+<div class="contenedor-principal" [style.visibility]="ocultarContenido ? 'hidden' : 'visible'">
+  <mat-form-field class="div-buscador" appearance="outline">
+    <input matInput placeholder="Ubicar gasolinera" type="text" class="input-search" [(ngModel)]="buscador"/>
+    <button matSuffix mat-icon-button (click)="cancelarBusqueda()" [disabled]="borrarBuscador">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <button matSuffix mat-icon-button (click)="buscarGasolinera(buscador)">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <div class="cards-estaciones">
+    <mat-card class="card-individual" *ngFor="let gasolinera of gasolineras">
+      <mat-card-content>
+        <div>
+          <img class="img-gasolinera" src="../../../assets/{{gasolinera.imagen}}" alt="{{gasolinera.imagen}}">
+        </div>
+        <div class="direccion-seleccionar">
+          <div class="direccion">
+            <strong>Dirección:</strong>
+            <p>{{gasolinera.direccion}}</p>
+          </div>
+          <div>
+            <button mat-raised-button class="button-select" (click)="irEstaciones(gasolinera.id)">
+              Seleccionar
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
